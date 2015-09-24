@@ -54,7 +54,7 @@ public class PatternAnalyse {
         }
 
         for (Map.Entry < Double, Integer > entry: pattern_count.entrySet()) {
-         if(entry.getValue() >= (patternSize/2))
+         if(entry.getValue() >= (patternSize/2.1))
 			this.percentage += 60;
 			
         }
