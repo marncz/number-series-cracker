@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+ 
+public class Main {
+ 
+    public static void main(String[] args) {
+
+   
+     String input = BIO.getString();
+     
+     input = input.replaceAll("\\s+","");	// Remove all spaces
+     input = input.replaceAll("\\;+",",");	// Change ; to commas
+     input = input.replaceAll("\\.+",",");  // Change . to commas
+     
+    String[] array = input.split(",");
+    ArrayList<Integer> int_list = new ArrayList<Integer>();
+    int solution = 0;
+     for(int i = 0; i < array.length; i++){
+     System.out.println(i + 1 + " : " + array[i]);
+     int_list.add(toInt(array[i]));
+	 }
+	 
+	
+	 
+	 Cracker serie = new Cracker(int_list);
+	 int length = array.length;
+	 System.out.println("Length: " + length); 
+	 System.out.println("Solution: " + length); 
+	 
+	 int last_diff = -999;
+	 for(int a = 0; a < array.length -1; a++){
+		
+		System.out.print(array[a+1] + " - " + array[a] + " => ");
+		System.out.print(Integer.parseInt(array[a+1]) - Integer.parseInt(array[a]));
+		System.out.println();
+		last_diff = Integer.parseInt(array[a+1]) - Integer.parseInt(array[a]);
+		
+		if(last_diff == Integer.parseInt(array[a+1]) - Integer.parseInt(array[a]) && last_diff != -999){
+	    solution = Integer.parseInt(array[array.length-1]) + last_diff;
+		}
+	 }
+	 
+	 
+	 System.out.println();
+	 for(int i = 0; i < array.length; i++){
+     System.out.print(array[i] + ",");
+	 }
+	 System.out.print(solution);
+	 System.out.println();
+	 System.out.println();
+}
+
+	public static int toInt (String a){
+	return Integer.parseInt(a);
+	} 
+
+
+}
+
