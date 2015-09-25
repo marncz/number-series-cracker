@@ -4,14 +4,14 @@ import java.util.*;
 public class PatternAnalyse {
 
     private ArrayList < Double > array;
-    private List < Double > pattern;
+    private ArrayList < Double > pattern;
     private int jump;
     private int size;
     private int patternSize;
     public int percentage = 0;
     public String action;
 
-    public PatternAnalyse(ArrayList < Double > array, int jump, List < Double > pattern, String action) {
+    public PatternAnalyse(ArrayList < Double > array, int jump, ArrayList < Double > pattern, String action) {
 
         this.array = array;
         this.pattern = pattern;
@@ -59,7 +59,7 @@ public class PatternAnalyse {
 
         }
 
-
+	
 
 
         /* Check for any number patterns in solution */
@@ -77,7 +77,11 @@ public class PatternAnalyse {
 
             find_solution(pattern_count);
 
-        }
+        }else{
+			
+		Cracker serie = new Cracker(pattern);	
+		
+		}
         return this.percentage;
 
     }

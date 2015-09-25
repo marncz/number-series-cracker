@@ -32,10 +32,10 @@ public class Cracker {
     public void crack(int method, ArrayList < Double > array) {
        if (ApplySolution.solved() == false){
         System.out.println();
-        HashMap < Integer, List < Double >> array_map = new HashMap < Integer, List < Double >> ();
+        HashMap < Integer, ArrayList < Double >> array_map = new HashMap < Integer, ArrayList < Double >> ();
 		
         for (int c = 1; c < array.size(); c++) {
-            List < Double > sum_list = new ArrayList < Double > ();
+            ArrayList < Double > sum_list = new ArrayList < Double > ();
             for (int a = 0; a < array.size(); a++) {
 				
                 for (int b = 0; b < array.size(); b++) {
@@ -67,7 +67,7 @@ public class Cracker {
             action = "multiply";
         }
  
-        for (Map.Entry < Integer, List < Double >> entry: array_map.entrySet()) {
+        for (Map.Entry < Integer, ArrayList < Double >> entry: array_map.entrySet()) {
             PatternAnalyse pattern = new PatternAnalyse(array, entry.getKey(),entry.getValue(),action);
             int prob = pattern.probability();
             	
