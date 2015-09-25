@@ -8,9 +8,9 @@ public class PatternAnalyse {
     private int jump;
     private int size;
     private int patternSize;
-	public int percentage = 0;
-	public String action;
-	
+    public int percentage = 0;
+    public String action;
+
     public PatternAnalyse(ArrayList < Double > array, int jump, List < Double > pattern, String action) {
 
         this.array = array;
@@ -23,7 +23,7 @@ public class PatternAnalyse {
 
     public int probability() {
 
-        int percentage = 0;
+       
         int solution_index = size - 1;
         boolean is_solution_even = (solution_index % 2 == 0);
         boolean is_jump_even = (jump % 2 == 0);
@@ -33,7 +33,7 @@ public class PatternAnalyse {
         Collections.sort(pattern_sorted);
         HashMap < Double, Integer > pattern_count = new HashMap < Double, Integer > ();
 
-		/* Count */
+        /* Count */
         int count_occ = 0;
         double last = 0;
         for (int i = 0; i < pattern_sorted.size(); i++) {
@@ -54,63 +54,61 @@ public class PatternAnalyse {
         }
 
         for (Map.Entry < Double, Integer > entry: pattern_count.entrySet()) {
-         if(entry.getValue() >= (patternSize/2.1))
-			this.percentage += 60;
-			
+            if (entry.getValue() >= (patternSize / 2))
+                if(percentage < 50) { percentage += 50; }
+
         }
-        
-       
- 
+
+
+
 
         /* Check for any number patterns in solution */
 
 
         /* If it will calculate the next number in serie */
         if (is_solution_even && is_jump_even || !is_solution_even && !is_jump_even)
-            this.percentage += 30;
+            percentage += 20;
 
         /* If size of solutions is higher than two */
         if (size > 2)
             this.percentage += 10;
 
-			
-	   
-		   
-		   if(this.percentage > 50){
-			   
-		   find_solution(pattern_count);
-		  
-		}
-		   return this.percentage;
-		   
-    }
-    
-    public void find_solution (HashMap<Double, Integer> pattern_count) {
-		
-		int max = 0;
-		double key = 0;
-		for (Map.Entry < Double, Integer > entry: pattern_count.entrySet()) {
-           
-			
-			//System.out.println("(" + entry.getKey() + " => " + entry.getValue() + ")");
-			if(entry.getValue() > max) {max = entry.getValue(); key = entry.getKey();
-			
-					
-		 	
+        if (this.percentage >= 20) {
+
+            find_solution(pattern_count);
+
         }
-        
-				ApplySolution.solved_set(true);
-				ApplySolution solution = new ApplySolution(array,jump,key,action);
-				solution.apply_answer();
+        return this.percentage;
+
+    }
+
+    public void find_solution(HashMap < Double, Integer > pattern_count) {
+
+        int max = 0;
+        double key = 0;
+        for (Map.Entry < Double, Integer > entry: pattern_count.entrySet()) {
+
+
+            //System.out.println("(" + entry.getKey() + " => " + entry.getValue() + ")");
+            if (entry.getValue() > max) {
+                max = entry.getValue();
+                key = entry.getKey();
+
+            }
+		}
+			if(percentage >= 30){
+            ApplySolution.solved_set(true);
+            ApplySolution solution = new ApplySolution(array, jump, key, action);
+            solution.apply_answer();
 		
-		
-	}
-}
-  public boolean check_solution(){
-	  
-	  
-	  return true;
-  }
+
+        }
+    }
+    public boolean check_solution() {
+
+
+        return true;
+    }
 
 
 }
