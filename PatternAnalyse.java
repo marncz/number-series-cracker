@@ -23,7 +23,7 @@ public class PatternAnalyse {
 
     public int probability() {
 
-       
+
         int solution_index = size - 1;
         boolean is_solution_even = (solution_index % 2 == 0);
         boolean is_jump_even = (jump % 2 == 0);
@@ -55,11 +55,13 @@ public class PatternAnalyse {
 
         for (Map.Entry < Double, Integer > entry: pattern_count.entrySet()) {
             if (entry.getValue() >= (patternSize / 2))
-                if(percentage < 50) { percentage += 50; }
+                if (percentage < 50) {
+                    percentage += 50;
+                }
 
         }
 
-	
+
 
 
         /* Check for any number patterns in solution */
@@ -77,11 +79,11 @@ public class PatternAnalyse {
 
             find_solution(pattern_count);
 
-        }else{
-			
-		Cracker serie = new Cracker(pattern);	
-		
-		}
+        } else {
+
+            Cracker serie = new Cracker(pattern);
+
+        }
         return this.percentage;
 
     }
@@ -99,12 +101,12 @@ public class PatternAnalyse {
                 key = entry.getKey();
 
             }
-		}
-			if(percentage >= 30){
+        }
+        if (percentage >= 30) {
             ApplySolution.solved_set(true);
             ApplySolution solution = new ApplySolution(array, jump, key, action);
             solution.apply_answer();
-		
+
 
         }
     }
